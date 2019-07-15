@@ -4,6 +4,10 @@ import pl.podsiadlo.skischool1.function.Function;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -15,8 +19,10 @@ public class Qualification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     String name;
+    @ManyToOne
     Function function;
     double hourlySalary;
+
 
     public Qualification() {
     }

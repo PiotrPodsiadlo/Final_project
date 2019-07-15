@@ -1,16 +1,22 @@
 package pl.podsiadlo.skischool1.function;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import pl.podsiadlo.skischool1.qualification.Qualification;
 
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "functions")
 public class Function {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String type;
-
+    @OneToMany(mappedBy = "function")
+    private Set<Qualification> qualifications =
+            new HashSet<>();
 
     public Function() {
     }
