@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Controller
@@ -23,10 +24,9 @@ public class QualificationController {
     }
 
     @GetMapping("/all")
-    @ResponseBody
     public String allQualifications(Model model) {
-        model.addAttribute("qualifications", model);
-        return "display_users";
+        model.addAttribute("quals",qualificationService.findAllQualifications());
+        return "qualification/displayAll";
     }
 
 }

@@ -16,5 +16,15 @@
 </head>
 <body>
 <h1><spring:message code="app.title"/></h1>
+
+<c:forEach items="${quals}" var="qual">
+    <tr>
+        <td><c:out value="${qual.getFunction()}"/></td>
+        <td><c:out value="${qual.getName()}"/></td>
+        <td><c:out value="${qual.getHourlySalary()}"/></td>
+        <td><a href="/user/delete/${qual.getId()}">delete</a></td>
+        </br>
+    </tr>
+</c:forEach>
 </body>
 </html>

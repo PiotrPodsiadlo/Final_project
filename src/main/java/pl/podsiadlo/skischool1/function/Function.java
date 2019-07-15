@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "functions")
+//@Table(name = "function")
 public class Function {
 
     @Id

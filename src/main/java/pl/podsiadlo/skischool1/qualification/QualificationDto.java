@@ -7,14 +7,19 @@ import javax.persistence.ManyToOne;
 public class QualificationDto {
 
     private Long id;
-    String name;
-    String function;
-    double hourlySalary;
+    private String name;
+    private String function;
+    private Long functionId;
+    private double hourlySalary;
 
     public QualificationDto(Qualification that) {
+        this.id = that.getId();
         this.name = that.getName();
         this.function = that.getFunction().getFunctionType();
         this.hourlySalary = that.getHourlySalary();
+        this.functionId = that.getId();
+
+
 
     }
 
@@ -51,6 +56,15 @@ public class QualificationDto {
 
     public QualificationDto setHourlySalary(double hourlySalary) {
         this.hourlySalary = hourlySalary;
+        return this;
+    }
+
+    public Long getFunctionId() {
+        return functionId;
+    }
+
+    public QualificationDto setFunctionId(Long functionId) {
+        this.functionId = functionId;
         return this;
     }
 }

@@ -11,7 +11,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "qualifications")
+//@Table(name = "qualification")
 public class Qualification {
 
 
