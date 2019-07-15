@@ -54,7 +54,7 @@ public class QualificationController {
         qualificationService.save(qualification);
         List all = qualificationService.findAll();
         System.out.println(all);
-        return "qualification/displayAll";
+        return "redirect:qualification/displayAll";
     }
 
 
