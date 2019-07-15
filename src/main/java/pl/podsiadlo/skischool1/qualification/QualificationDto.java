@@ -12,6 +12,9 @@ public class QualificationDto {
     private Long functionId;
     private double hourlySalary;
 
+    public QualificationDto() {
+    }
+
     public QualificationDto(Qualification that) {
         this.id = that.getId();
         this.name = that.getName();

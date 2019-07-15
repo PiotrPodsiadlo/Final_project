@@ -19,4 +19,9 @@ public class FunctionService {
     public List<Function> findFunctions(){
         return functionRepository.findAll();
     }
+
+    public Function findOne(Long id){
+        return functionRepository.getOne(id);
+
+    }
 }
