@@ -65,7 +65,7 @@ public class Qualification {
 }
 /**
  * Qualification describes level of abilities of instructor. Specific categories are
- * linked with specific salary. Qualifications can be added by admin .Instructor's  basic hourly salary depends on his/her qualification
+ * linked with specific salary. Qualifications can be added by admin .If not explicitely provided, Instructor's  basic hourly salary depends on his/her qualification
  * relation: Qualification -> Salary = OneToOne
  * relation: Qualification <- Function OnetoMany
  * Only instructors who are both snowboard and ski instructors can have two Qualifications, the rest can have only one .

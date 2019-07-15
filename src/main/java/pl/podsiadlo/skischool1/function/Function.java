@@ -44,7 +44,7 @@ public class Function {
 
 /**
  *
- *  Function should define if Instructor is a ski or snowboard instructor (or both). Functions MIGHT NOT be defined by user
+ *  Function should define if Instructor is a ski or snowboard instructor (or both). Functions MIGHT NOT be defined by any user but are fixed (snb instructor, ski instructor)
  *  relation: Instructor -> Function = ManyToMany
  *  relation: Function -> Qualification = OneToMany
  *
