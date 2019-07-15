@@ -7,6 +7,6 @@ import pl.podsiadlo.skischool1.qualification.Qualification;
 @Repository
 public interface FunctionRepository extends JpaRepository<Function, Long> {
 
-
+    Function findFirstByType(String type);
 
 }

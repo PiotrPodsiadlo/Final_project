@@ -48,8 +48,9 @@ public class QualificationController {
         }
         Qualification qualification = new Qualification();
 
-        qualification.setFunction(functionService.findOne((long) 1));
-
+        qualification.setFunction(functionService.findOne(qualificationDto.getFunction()));
+        qualification.setHourlySalary(qualificationDto.getHourlySalary());
+        qualification.setName(qualificationDto.getName());
         qualificationService.save(qualification);
         List all = qualificationService.findAll();
         System.out.println(all);

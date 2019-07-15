@@ -20,8 +20,8 @@ public class FunctionService {
         return functionRepository.findAll();
     }
 
-    public Function findOne(Long id){
-        return functionRepository.getOne(id);
+    public Function findOne(String type){
+        return functionRepository.findFirstByType(type);
 
     }
 }
