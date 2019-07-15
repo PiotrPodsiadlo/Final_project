@@ -58,11 +58,26 @@ public class QualificationController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable Long id) {
+    public String deleteQual(@PathVariable Long id) {
         qualificationService.remove(id);
         return "redirect:/qual/all";
     }
 
+    @GetMapping("/edit/{id}")
+    public String editQual(Model model, @PathVariable Long id) {
+        QualificationDto qualificationDto = qualificationService.findById(id);
+        model.addAttribute("qual",  qualificationDto);
+        return "qualification/edit";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateQual(@Valid QualificationDto qualificationDto, BindingResult result, @PathVariable Long id) {
+        if (result.hasErrors()) {
+            return "qualification/edit";
+        }
+        qualificationService.updateQualFromForm(qualificationDto);
+        return "redirect:/qual/all";
+    }
 
 
 

@@ -17,11 +17,11 @@ public class QualificationService {
 
     QualificationRepository qualificationRepository;
     FunctionRepository functionRepository;
-
     public QualificationService(QualificationRepository qualificationRepository, FunctionRepository functionRepository) {
         this.qualificationRepository = qualificationRepository;
         this.functionRepository = functionRepository;
     }
+
 
     public List<QualificationDto> findAll(){
         return qualificationRepository.findAll().stream().map(e -> new QualificationDto(e)).collect(Collectors.toList());
@@ -41,6 +41,15 @@ public class QualificationService {
         qualificationRepository.deleteById(id);
     }
 
+    public QualificationDto findById(Long id){
+        return new QualificationDto(qualificationRepository.getOne(id));
+    }
 
+    public void updateQualFromForm(QualificationDto qualificationDto){
+        Qualification qualification = qualificationRepository.getOne(qualificationDto.getId());
+        qualification.setName(qualificationDto.getName());
+        qualification.setHourlySalary(qualificationDto.getHourlySalary());
+        qualificationRepository.save(qualification);
+    }
 
 }

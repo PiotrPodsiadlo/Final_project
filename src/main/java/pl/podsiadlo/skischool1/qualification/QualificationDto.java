@@ -21,9 +21,6 @@ public class QualificationDto {
         this.function = that.getFunction().getFunctionType();
         this.hourlySalary = that.getHourlySalary();
         this.functionId = that.getId();
-
-
-
     }
 
     public Long getId() {

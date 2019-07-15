@@ -23,6 +23,7 @@
         <td><c:out value="${qual.getName()}"/></td>
         <td><c:out value="${qual.getHourlySalary()}"/></td>
         <td><a href="/qual/delete/${qual.getId()}">delete</a></td>
+        <td><a href="/qual/edit/${qual.getId()}">edit</a></td>
         </br>
     </tr>
 </c:forEach>
