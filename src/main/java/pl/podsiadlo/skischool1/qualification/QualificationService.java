@@ -37,6 +37,9 @@ public class QualificationService {
         qualificationRepository.save(qualification);
     }
 
+    public void remove(Long id){
+        qualificationRepository.deleteById(id);
+    }
 
 
 

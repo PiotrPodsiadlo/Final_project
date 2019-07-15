@@ -22,7 +22,7 @@
         <td><c:out value="${qual.getFunction()}"/></td>
         <td><c:out value="${qual.getName()}"/></td>
         <td><c:out value="${qual.getHourlySalary()}"/></td>
-        <td><a href="/user/delete/${qual.getId()}">delete</a></td>
+        <td><a href="/qual/delete/${qual.getId()}">delete</a></td>
         </br>
     </tr>
 </c:forEach>

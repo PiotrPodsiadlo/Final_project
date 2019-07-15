@@ -54,10 +54,14 @@ public class QualificationController {
         qualificationService.save(qualification);
         List all = qualificationService.findAll();
         System.out.println(all);
-        return "redirect:qualification/displayAll";
+        return "redirect:/qual/all";
     }
 
-
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        qualificationService.remove(id);
+        return "redirect:/qual/all";
+    }
 
 
 
