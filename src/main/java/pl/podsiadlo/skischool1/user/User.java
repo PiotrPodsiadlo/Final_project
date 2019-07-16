@@ -1,5 +1,6 @@
 package pl.podsiadlo.skischool1.user;
 
+import lombok.Data;
 import pl.podsiadlo.skischool1.function.Function;
 import pl.podsiadlo.skischool1.qualification.Qualification;
 
@@ -8,6 +9,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data       // default getter and setter from lombok
 @Entity
 public class User {
 
@@ -18,7 +20,7 @@ public class User {
     private String email;
     @ManyToMany
     private Set<Qualification> qualifications = new HashSet<>();
-    private String role;
+    @Column(nullable = true, length = 255, unique = false)
     private double salary;
     private int lessonCount;
     private int status;                                                         // 0=not active (cannot be added to schedule) 1=active, can be added to schedule, 2=active, scheduled
