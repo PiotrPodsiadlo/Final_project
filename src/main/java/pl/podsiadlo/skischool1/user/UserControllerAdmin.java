@@ -3,12 +3,18 @@ package pl.podsiadlo.skischool1.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pl.podsiadlo.skischool1.qualification.Qualification;
+import pl.podsiadlo.skischool1.qualification.QualificationDto;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/usrA")
@@ -34,16 +40,9 @@ public class UserControllerAdmin {
     //++++++++++++++++++++++++++++++++++++ above only for development purpose!++++++++++++++++++++++++++++++++++++++++++
 
 
+
+
     @GetMapping("/all")
-    // shows all users with attributes which are mutual for all users (name, id,  email)
-    public String displayAll(Model model) {
-        List<User> users = userServiceImpl.findAll();
-
-        model.addAttribute("users", users);
-        return "user/displayAll";
-    }
-
-    @GetMapping("/all/admins")
     // shows all users with ROLE_ADMIN
     public String displayAllAdmin(Model model) {
         List<User> users = new ArrayList<>();
@@ -52,32 +51,23 @@ public class UserControllerAdmin {
         return "user/displayAllAdmins";
     }
 
-    @GetMapping("/all/recption")
-    // shows all users with ROLE_RECEPTION
-    public String displayAllReception(Model model) {
-        List<User> users = new ArrayList<>();
+    @GetMapping("/add")
+    public String addUser(Model model){
 
-        model.addAttribute("users", users);
-        return "user/displayAllReception";
+        return "qualification/create";
     }
 
-    @GetMapping("/all/customers")
-    // shows all users with ROLE_RECEPTION
-    public String displayAllCustomers(Model model) {
-        List<User> users = new ArrayList<>();
+    @PostMapping("/add")
+    public String createUser(@Valid QualificationDto qualificationDto, BindingResult result, Model model){
+        if (result.hasErrors()) {
 
-        model.addAttribute("users", users);
-        return "user/displayAllCustomers";
+            return "qualification/create";
+        }
+
+        return "redirect:/usrA/all";
     }
 
-    @GetMapping("/all/instructors")
-    // shows all users with ROLE_RECEPTION
-    public String displayAllInstructors(Model model) {
-        List<User> users = new ArrayList<>();
 
-        model.addAttribute("users", users);
-        return "user/displayAllInstructors";
-    }
 
 
 }
