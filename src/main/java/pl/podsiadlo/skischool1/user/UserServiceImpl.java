@@ -7,6 +7,7 @@ import pl.podsiadlo.skischool1.role.RoleRepository;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 
 @Service
@@ -23,7 +24,6 @@ public class UserServiceImpl  {
         this.roleRepository = roleRepository;
     }
 
-
     public User findByUserName(String username) {
         return userRepository.findByName(username);
     }
@@ -37,7 +37,13 @@ public class UserServiceImpl  {
         userRepository.save(user);
     }
 
+    public List<User> findAll(){
+        return userRepository.findAll();
+    }
 
+    public List<User> findAllAdmins(){
+        return userRepository.findAll();
+    }
 
 
 }
