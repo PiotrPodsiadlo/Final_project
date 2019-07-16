@@ -10,7 +10,7 @@ import java.util.HashSet;
 
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl  {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -23,12 +23,12 @@ public class UserServiceImpl implements UserService {
         this.roleRepository = roleRepository;
     }
 
-    @Override
+
     public User findByUserName(String username) {
         return userRepository.findByName(username);
     }
 
-    @Override
+
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);

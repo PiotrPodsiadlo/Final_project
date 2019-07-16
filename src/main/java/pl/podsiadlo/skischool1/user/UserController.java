@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/usr")
 public class UserController {
 
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public UserController(UserServiceImpl userServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
     }
 // Sample controller action to create sample user -- group for this user has to be added manually in database.
     @GetMapping("/sample")
@@ -23,7 +23,7 @@ public class UserController {
         user.setName("admin");
         user.setEmail("abc@g.pl");
         user.setPassword("admin");
-        userService.saveUser(user);
+        userServiceImpl.saveUser(user);
         return "admin";
     }
 

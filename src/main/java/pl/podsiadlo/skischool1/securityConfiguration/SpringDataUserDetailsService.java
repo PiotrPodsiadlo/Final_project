@@ -7,22 +7,23 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import pl.podsiadlo.skischool1.user.User;
-import pl.podsiadlo.skischool1.user.UserService;
+//import pl.podsiadlo.skischool1.user.UserService;
+import pl.podsiadlo.skischool1.user.UserServiceImpl;
 
 import java.util.HashSet;
 import java.util.Set;
 // service for authentication
 public class SpringDataUserDetailsService implements UserDetailsService {
 
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
     @Autowired
-    public void setUserRepository(UserService userService) {
-        this.userService = userService;
+    public void setUserRepository(UserServiceImpl userServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
     }
     @Override
     public UserDetails loadUserByUsername(String username) {
-        User user = userService.findByUserName(username);
+        User user = userServiceImpl.findByUserName(username);
         if (user == null) {throw new UsernameNotFoundException(username); }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         user.getRoles().forEach(r ->
