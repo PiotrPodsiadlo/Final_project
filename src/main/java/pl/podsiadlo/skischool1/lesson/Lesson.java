@@ -1,13 +1,14 @@
 package pl.podsiadlo.skischool1.lesson;
 
 
+import lombok.Data;
 import pl.podsiadlo.skischool1.lesson.pricing.Pricing;
 import pl.podsiadlo.skischool1.lesson.status.LessonStatus;
 import pl.podsiadlo.skischool1.user.User;
 
 import javax.persistence.*;
 import java.util.Date;
-
+@Data
 @Entity
 public class Lesson {
 

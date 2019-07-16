@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/usr")
-public class UserController {
+@RequestMapping("/usrI")
+public class UserControllerInstructor {
 
     private UserServiceImpl userServiceImpl;
 
-    public UserController(UserServiceImpl userServiceImpl) {
+    public UserControllerInstructor(UserServiceImpl userServiceImpl) {
         this.userServiceImpl = userServiceImpl;
     }
 
@@ -41,6 +41,42 @@ public class UserController {
 
         model.addAttribute("users", users);
         return "user/displayAll";
+    }
+
+    @GetMapping("/all/admins")
+    // shows all users with ROLE_ADMIN
+    public String displayAllAdmin(Model model) {
+        List<User> users = new ArrayList<>();
+
+        model.addAttribute("users", users);
+        return "user/displayAllAdmins";
+    }
+
+    @GetMapping("/all/recption")
+    // shows all users with ROLE_RECEPTION
+    public String displayAllReception(Model model) {
+        List<User> users = new ArrayList<>();
+
+        model.addAttribute("users", users);
+        return "user/displayAllReception";
+    }
+
+    @GetMapping("/all/customers")
+    // shows all users with ROLE_RECEPTION
+    public String displayAllCustomers(Model model) {
+        List<User> users = new ArrayList<>();
+
+        model.addAttribute("users", users);
+        return "user/displayAllCustomers";
+    }
+
+    @GetMapping("/all/instructors")
+    // shows all users with ROLE_RECEPTION
+    public String displayAllInstructors(Model model) {
+        List<User> users = new ArrayList<>();
+
+        model.addAttribute("users", users);
+        return "user/displayAllInstructors";
     }
 
 
