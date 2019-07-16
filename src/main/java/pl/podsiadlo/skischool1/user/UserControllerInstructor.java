@@ -33,8 +33,8 @@ public class UserControllerInstructor {
     }
     //++++++++++++++++++++++++++++++++++++ above only for development purpose!++++++++++++++++++++++++++++++++++++++++++
 
-
-    @GetMapping("/all")
+    /*instructors can display their own details*/
+    @GetMapping("/details")
     // shows all users with attributes which are mutual for all users (name, id,  email)
     public String displayAll(Model model) {
         List<User> users = userServiceImpl.findAll();
@@ -43,41 +43,7 @@ public class UserControllerInstructor {
         return "user/displayAll";
     }
 
-    @GetMapping("/all/admins")
-    // shows all users with ROLE_ADMIN
-    public String displayAllAdmin(Model model) {
-        List<User> users = new ArrayList<>();
 
-        model.addAttribute("users", users);
-        return "user/displayAllAdmins";
-    }
-
-    @GetMapping("/all/recption")
-    // shows all users with ROLE_RECEPTION
-    public String displayAllReception(Model model) {
-        List<User> users = new ArrayList<>();
-
-        model.addAttribute("users", users);
-        return "user/displayAllReception";
-    }
-
-    @GetMapping("/all/customers")
-    // shows all users with ROLE_RECEPTION
-    public String displayAllCustomers(Model model) {
-        List<User> users = new ArrayList<>();
-
-        model.addAttribute("users", users);
-        return "user/displayAllCustomers";
-    }
-
-    @GetMapping("/all/instructors")
-    // shows all users with ROLE_RECEPTION
-    public String displayAllInstructors(Model model) {
-        List<User> users = new ArrayList<>();
-
-        model.addAttribute("users", users);
-        return "user/displayAllInstructors";
-    }
 
 
 }

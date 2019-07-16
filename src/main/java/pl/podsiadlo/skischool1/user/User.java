@@ -1,6 +1,7 @@
 package pl.podsiadlo.skischool1.user;
 
 import lombok.Data;
+import pl.podsiadlo.skischool1.enums.UserState;
 import pl.podsiadlo.skischool1.function.Function;
 import pl.podsiadlo.skischool1.lesson.Lesson;
 import pl.podsiadlo.skischool1.qualification.Qualification;
@@ -29,8 +30,10 @@ public class User {
     private double salary;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Role> roles;
-    private int status;                                                         // 0=not active (cannot be added to schedule) 1=active, can be added to schedule, 2=active, scheduled
-    private int enabled = 0;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = true, unique = false)
+    private UserState status;                                                         // 0=not active (cannot be added to schedule) 1=active, can be added to schedule, 2=active, scheduled
+    private int enabled;
 
 
 }

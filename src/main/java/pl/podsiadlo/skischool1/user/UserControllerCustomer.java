@@ -3,10 +3,11 @@ package pl.podsiadlo.skischool1.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import pl.podsiadlo.skischool1.qualification.QualificationDto;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class UserControllerCustomer {
 
 
     @GetMapping("/all")
-    // shows all users with attributes which are mutual for all users (name, id,  email)
+    // shows all CUSTOMERS
     public String displayAll(Model model) {
         List<User> users = userServiceImpl.findAll();
 
@@ -43,41 +44,50 @@ public class UserControllerCustomer {
         return "user/displayAll";
     }
 
-    @GetMapping("/all/admins")
-    // shows all users with ROLE_ADMIN
-    public String displayAllAdmin(Model model) {
-        List<User> users = new ArrayList<>();
 
-        model.addAttribute("users", users);
-        return "user/displayAllAdmins";
+    @GetMapping("/add")
+    public String addUser(Model model){
+
+        return "qualification/create";
     }
 
-    @GetMapping("/all/recption")
-    // shows all users with ROLE_RECEPTION
-    public String displayAllReception(Model model) {
-        List<User> users = new ArrayList<>();
+    @PostMapping("/add")
+    public String createUser(@Valid QualificationDto qualificationDto, BindingResult result, Model model){
+        if (result.hasErrors()) {
 
-        model.addAttribute("users", users);
-        return "user/displayAllReception";
+            return "qualification/create";
+        }
+
+        return "redirect:/usrA/all";
     }
 
-    @GetMapping("/all/customers")
-    // shows all users with ROLE_RECEPTION
-    public String displayAllCustomers(Model model) {
-        List<User> users = new ArrayList<>();
+    @GetMapping("/edit/{id}")
+    public String editLesson(Model model, @PathVariable Long id) {
 
-        model.addAttribute("users", users);
-        return "user/displayAllCustomers";
+        model.addAttribute("lesson");
+        return "lesson/edit";
     }
 
-    @GetMapping("/all/instructors")
-    // shows all users with ROLE_RECEPTION
-    public String displayAllInstructors(Model model) {
-        List<User> users = new ArrayList<>();
-
-        model.addAttribute("users", users);
-        return "user/displayAllInstructors";
+    @PostMapping("/edit/{id}")
+    public String updateLesson(@Valid QualificationDto qualificationDto, BindingResult result, @PathVariable Long id, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("qual",  qualificationDto);
+            System.out.println("chuj");
+            return "lesson/edit";
+        }
+//        lessonService.updateLessonFromForm(qualificationDto);
+        return "redirect:/lesson/all";
     }
+
+
+
+
+
+
+
+
+
+
 
 
 }

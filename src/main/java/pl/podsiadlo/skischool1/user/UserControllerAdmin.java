@@ -4,10 +4,7 @@ package pl.podsiadlo.skischool1.user;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import pl.podsiadlo.skischool1.qualification.Qualification;
 import pl.podsiadlo.skischool1.qualification.QualificationDto;
 
@@ -18,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/usrA")
-public class UserControllerAdmin {
+public class UserControllerAdmin  {
 
     private UserServiceImpl userServiceImpl;
 
@@ -42,7 +39,7 @@ public class UserControllerAdmin {
 
 
 
-    @GetMapping("/all")
+    @GetMapping("/allA")
     // shows all users with ROLE_ADMIN
     public String displayAllAdmin(Model model) {
         List<User> users = new ArrayList<>();
@@ -50,6 +47,7 @@ public class UserControllerAdmin {
         model.addAttribute("users", users);
         return "user/displayAllAdmins";
     }
+/** admin can add users of any role except ROLE_ADMIN */
 
     @GetMapping("/add")
     public String addUser(Model model){
@@ -67,7 +65,30 @@ public class UserControllerAdmin {
         return "redirect:/usrA/all";
     }
 
+    /** admin can edit users of any role except ROLE_ADMIN */
+
+    @GetMapping("/edit/{id}/{role}")
+    public String editLesson(Model model, @PathVariable Long id, @PathVariable Long role) {
+
+        model.addAttribute("lesson");
+        return "lesson/edit";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateLesson(@Valid QualificationDto qualificationDto, BindingResult result, @PathVariable Long id, Model model) {
+        if (result.hasErrors()) {
+
+            return "lesson/edit";
+        }
+
+        return "redirect:/lesson/all";
+    }
 
 
 
+    /* only admin can activate employees created by reception workers */
+    @GetMapping("/activate/{id}")
+    public String activateEmployee(){
+        return "a";
+    }
 }
