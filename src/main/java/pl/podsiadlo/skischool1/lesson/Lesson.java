@@ -1,6 +1,8 @@
 package pl.podsiadlo.skischool1.lesson;
 
 
+import pl.podsiadlo.skischool1.lesson.pricing.Pricing;
+import pl.podsiadlo.skischool1.lesson.status.LessonStatus;
 import pl.podsiadlo.skischool1.user.User;
 
 import javax.persistence.*;
@@ -24,10 +26,13 @@ public class Lesson {
     private User receptionist;                                      // who scheduled this lesson
     private int durationMins;
     private int durationHours;
-    private double price;
+    @ManyToOne
+    private Pricing price;
     private double instructorCost;
-    private Date dateOfLesson;
+    private Date timeOfLesson;
     @Column(nullable = true, unique = false)
     private String location;
     private int numberOfParticipants;
+    @ManyToOne
+    private LessonStatus status;
 }
