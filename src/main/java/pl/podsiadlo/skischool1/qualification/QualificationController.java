@@ -44,7 +44,13 @@ public class QualificationController {
     @PostMapping("/all")
     public String createBook(@Valid QualificationDto qualificationDto, BindingResult result, Model model){
         if (result.hasErrors()) {
+            model.addAttribute("qual", new Qualification());
+            model.addAttribute("functions", functionService.findFunctions().stream().map(e->e.getFunctionType()).collect(Collectors.toList()));
+
+            System.out.println("oooooooooooooo");
             return "qualification/create";
+        }else{
+            System.out.println(qualificationDto);
         }
         Qualification qualification = new Qualification();
 

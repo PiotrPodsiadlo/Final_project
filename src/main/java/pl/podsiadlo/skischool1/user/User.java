@@ -1,5 +1,6 @@
 package pl.podsiadlo.skischool1.user;
 
+import pl.podsiadlo.skischool1.function.Function;
 import pl.podsiadlo.skischool1.qualification.Qualification;
 
 import javax.persistence.Entity;
@@ -21,6 +22,7 @@ public class User {
     private String email;
     private String mobileNumber;
     private String sex;
+
     private Set<Qualification> qualifications = new HashSet<>();
     private String role;
     private Date whenCreated;
@@ -28,6 +30,7 @@ public class User {
     private int lessonCount;
     private boolean isActive;
     private boolean isScheduled;
+    
 
 }
 

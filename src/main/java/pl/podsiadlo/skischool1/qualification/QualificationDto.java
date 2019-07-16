@@ -10,7 +10,7 @@ public class QualificationDto {
 
     private Long id;
     private String name;
-    @NotNull
+    @NotBlank
     private String function;
     private Long functionId;
     private double hourlySalary;
