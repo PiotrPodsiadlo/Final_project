@@ -18,6 +18,8 @@ public class User {
     private Long id;
     private String name;
     private String email;
+    @Column(nullable = true, unique = false)
+    private String password;
     @ManyToMany
     @JoinTable(name = "users_qualifications",
             joinColumns = @JoinColumn(name = "user_id"),
