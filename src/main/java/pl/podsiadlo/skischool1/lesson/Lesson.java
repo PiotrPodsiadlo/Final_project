@@ -1,6 +1,6 @@
 package pl.podsiadlo.skischool1.lesson;
 
-import pl.podsiadlo.skischool1.location.Location;
+
 import pl.podsiadlo.skischool1.user.User;
 
 import javax.persistence.Entity;
@@ -15,13 +15,13 @@ public class Lesson {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date created;
-    private Date scheduled;
-    private User instructor;
-    private User customer;
-    private double durationMins;
+    private Date scheduled;                                         // time of the lesson
+    private User instructor;                                        // who teaches on this lesson
+    private User customer;                                          // who is the student
+    private int durationMins;
+    private int durationHours;
     private double price;
-    private double instructorCosty;
-    private Location location;
+    private double instructorCost;
+    private String location;
 
 }
