@@ -1,4 +1,4 @@
-package pl.podsiadlo.skischool1.configuration;
+package pl.podsiadlo.skischool1.securityConfiguration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

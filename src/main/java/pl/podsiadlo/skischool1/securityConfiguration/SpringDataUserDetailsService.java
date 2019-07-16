@@ -1,4 +1,4 @@
-package pl.podsiadlo.skischool1.configuration;
+package pl.podsiadlo.skischool1.securityConfiguration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,7 +11,7 @@ import pl.podsiadlo.skischool1.user.UserService;
 
 import java.util.HashSet;
 import java.util.Set;
-
+// service for authentication
 public class SpringDataUserDetailsService implements UserDetailsService {
 
     private UserService userService;

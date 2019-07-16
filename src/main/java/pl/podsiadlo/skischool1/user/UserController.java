@@ -15,7 +15,7 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
+// Sample controller action to create sample user -- group for this user has to be added manually in database.
     @GetMapping("/sample")
     @ResponseBody
     public String createUser() {
@@ -26,4 +26,9 @@ public class UserController {
         userService.saveUser(user);
         return "admin";
     }
+
+
+
+
+
 }
