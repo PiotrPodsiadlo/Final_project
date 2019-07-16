@@ -19,6 +19,9 @@ public class User {
     private String name;
     private String email;
     @ManyToMany
+    @JoinTable(name = "users_qualifications",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "qualification_id"))
     private Set<Qualification> qualifications = new HashSet<>();
     @Column(nullable = true, length = 255, unique = false)
     private double salary;

@@ -1,6 +1,7 @@
 package pl.podsiadlo.skischool1.qualification;
 
 import pl.podsiadlo.skischool1.function.Function;
+import pl.podsiadlo.skischool1.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -22,7 +23,8 @@ public class Qualification {
     @ManyToOne
     Function function;
     double hourlySalary;
-
+    @ManyToMany(mappedBy = "qualifications")
+    private List<User> users = new ArrayList<>();
 
     public Qualification() {
     }
@@ -60,6 +62,15 @@ public class Qualification {
 
     public Qualification setHourlySalary(double hourlySalary) {
         this.hourlySalary = hourlySalary;
+        return this;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public Qualification setUsers(List<User> users) {
+        this.users = users;
         return this;
     }
 }
