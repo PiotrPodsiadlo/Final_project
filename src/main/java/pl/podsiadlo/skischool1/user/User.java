@@ -14,8 +14,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastname;
+    private String name;
     private String email;
     @ManyToMany
     private Set<Qualification> qualifications = new HashSet<>();
