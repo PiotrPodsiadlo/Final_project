@@ -4,6 +4,7 @@ import lombok.Data;
 import pl.podsiadlo.skischool1.function.Function;
 import pl.podsiadlo.skischool1.lesson.Lesson;
 import pl.podsiadlo.skischool1.qualification.Qualification;
+import pl.podsiadlo.skischool1.role.Role;
 
 import javax.persistence.*;
 import java.util.*;
@@ -24,8 +25,8 @@ public class User {
     private Set<Qualification> qualifications = new HashSet<>();
     @Column(nullable = true, unique = false)
     private double salary;
-
-//    private Role role;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Role> roles;
     private int status;                                                         // 0=not active (cannot be added to schedule) 1=active, can be added to schedule, 2=active, scheduled
     private int enabled = 0;
 
