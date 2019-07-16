@@ -24,15 +24,15 @@ public class Lesson {
     @ManyToOne
     @JoinColumn(name = "receptionist_id")
     private User receptionist;                                      // who scheduled this lesson
-    private int durationMins;
+    private int durationMins;                                       // how many minutes/hours takes that lesson
     private int durationHours;
     @ManyToOne
-    private Pricing price;
+    private Pricing price;                                          // price from the pricing list
     private double instructorCost;
-    private Date timeOfLesson;
+    private Date timeOfLesson;                                      //exact DateTime when lesson starts
     @Column(nullable = true, unique = false)
     private String location;
-    private int numberOfParticipants;
+    private int numberOfParticipants;                               //number of participants means that one customer can book lesson for many participants, one who booked a lesson is a customer and can be added as an user in database
     @ManyToOne
-    private LessonStatus status;
+    private LessonStatus status;                                    // lesson can be booked, paid, cancelled(after/before payment), refounded etc.
 }
