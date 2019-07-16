@@ -22,8 +22,8 @@
     <div>SALARY:</div><form:input path="hourlySalary"/></br>
     <form:errors path="hourlySalary" cssClass="error" />
 
-    FUNCTION: <form:select path="function" multiple="true" items="${functions}"/></br>
-
+    <div>FUNCTION:</div> <form:select path="function" multiple="true" items="${functions}"/></br>
+    <form:errors path="function" cssClass="error" />
 
     <div>
         <input type="submit" value="Save">

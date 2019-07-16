@@ -3,11 +3,14 @@ package pl.podsiadlo.skischool1.qualification;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class QualificationDto {
 
     private Long id;
     private String name;
+    @NotNull
     private String function;
     private Long functionId;
     private double hourlySalary;
