@@ -41,13 +41,11 @@ public class QualificationController {
         return "qualification/create";
     }
 
-    @PostMapping("/all")
-    public String createBook(@Valid QualificationDto qualificationDto, BindingResult result, Model model){
+    @PostMapping("/add")
+    public String createQual(@Valid QualificationDto qualificationDto, BindingResult result, Model model){
         if (result.hasErrors()) {
-            model.addAttribute("qual", new Qualification());
+            model.addAttribute("qual", new QualificationDto());
             model.addAttribute("functions", functionService.findFunctions().stream().map(e->e.getFunctionType()).collect(Collectors.toList()));
-
-            System.out.println("oooooooooooooo");
             return "qualification/create";
         }else{
             System.out.println(qualificationDto);
@@ -77,8 +75,10 @@ public class QualificationController {
     }
 
     @PostMapping("/edit/{id}")
-    public String updateQual(@Valid QualificationDto qualificationDto, BindingResult result, @PathVariable Long id) {
+    public String updateQual(@Valid QualificationDto qualificationDto, BindingResult result, @PathVariable Long id, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("qual",  qualificationDto);
+            System.out.println("chuj");
             return "qualification/edit";
         }
         qualificationService.updateQualFromForm(qualificationDto);
