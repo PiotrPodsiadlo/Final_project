@@ -27,8 +27,4 @@ public class UserController {
         return "admin";
     }
 
-
-
-
-
 }
