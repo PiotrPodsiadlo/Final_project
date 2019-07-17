@@ -36,6 +36,14 @@ public class User {
     private int enabled;
 
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public User setRoles(Set<Role> roles) {
+        this.roles = roles;
+        return this;
+    }
 }
 
 

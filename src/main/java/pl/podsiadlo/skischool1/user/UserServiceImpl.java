@@ -32,7 +32,7 @@ public class UserServiceImpl  {
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
-        Role userRole = roleRepository.findByName("ROLE_USER");
+        Role userRole = roleRepository.findByName("ROLE_INSTRUCTOR");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
@@ -47,6 +47,16 @@ public class UserServiceImpl  {
 
     public List<User> findUsrRoles(User u){
         return userRepository.findAllByRolesName("ROLE_ADMIN");
+    }
+
+    public List<User> findAllByRole(String role){
+        return userRepository.findAllByRolesName(role);
+    }
+    //method to delete users with relations (e.g. with roles)
+    public void safeDelete(User user){
+        user.setRoles(null);
+        user.setQualifications(null);
+        userRepository.delete(user);
     }
 }
 
