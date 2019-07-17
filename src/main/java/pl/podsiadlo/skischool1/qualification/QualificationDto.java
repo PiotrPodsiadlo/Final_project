@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 public class QualificationDto {
 
     private Long id;
-    @Size(min=1, max=100)
+    @Size(min=5, max=100)
     private String name;
     private String function;
     private Long functionId;

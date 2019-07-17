@@ -31,7 +31,7 @@ public class Lesson {
     @ManyToOne
     private Pricing price;                                          // price from the pricing list
     private double instructorCost;
-    private Date timeOfLesson;                                      //exact DateTime when lesson starts
+    private Date dayAndHourOfLesson;                                      //exact Day anf time when lesson starts
     @Column(nullable = true, unique = false)
     private int numberOfParticipants;                               //number of participants means that one customer can book lesson for many participants, one who booked a lesson is a customer and can be added as an user in database
     @ManyToOne

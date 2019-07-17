@@ -43,6 +43,7 @@ public class LessonController {
 
     @GetMapping("/add")
     public String addLesson(Model model){
+        model.addAttribute("lesson", new Lesson());
 
         return "lesson/create";
     }

@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.podsiadlo.skischool1.qualification.Qualification;
 import pl.podsiadlo.skischool1.qualification.QualificationDto;
+import pl.podsiadlo.skischool1.role.Role;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 public class UserControllerAdmin  {
 
     private UserServiceImpl userServiceImpl;
+
 
     public UserControllerAdmin(UserServiceImpl userServiceImpl) {
         this.userServiceImpl = userServiceImpl;
@@ -36,7 +38,13 @@ public class UserControllerAdmin  {
     }
     //++++++++++++++++++++++++++++++++++++ above only for development purpose!++++++++++++++++++++++++++++++++++++++++++
 
-
+    @GetMapping("/r/{name}")
+    @ResponseBody
+    public String rolesOfUser(@PathVariable String name){
+        User user = userServiceImpl.findByUserName(name);
+        List<User> rolesOfUser = userServiceImpl.findUsrRoles(user);
+        return rolesOfUser.stream().map(e-> e.getName()).collect(Collectors.joining(", "));
+    }
 
 
     @GetMapping("/allA")
