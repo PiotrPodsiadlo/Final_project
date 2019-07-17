@@ -21,7 +21,9 @@ public class QualificationService {
         this.qualificationRepository = qualificationRepository;
         this.functionRepository = functionRepository;
     }
-
+    public List<Qualification> findAllObj(){
+        return qualificationRepository.findAll();
+    }
 
     public List<QualificationDto> findAll(){
         return qualificationRepository.findAll().stream().map(e -> new QualificationDto(e)).collect(Collectors.toList());
@@ -51,5 +53,10 @@ public class QualificationService {
         qualification.setHourlySalary(qualificationDto.getHourlySalary());
         qualificationRepository.save(qualification);
     }
+
+    public Qualification findByName(String name){
+        return qualificationRepository.findFirstByName(name);
+    }
+
 
 }
