@@ -21,6 +21,10 @@
 </head>
 <body>
 
+<a href="/les/add">add lesson</a></br>
+<a href="/qual/add">add qualification</a></br>
+<a href="/usr/all">display all users</a></br>
+<a href="/usr/sample">create sample instructors</a></br>
 <table>
 
 <th>INTSTRUCTORS/LESSONS</th>

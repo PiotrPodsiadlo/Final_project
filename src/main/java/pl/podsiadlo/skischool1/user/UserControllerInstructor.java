@@ -20,22 +20,10 @@ public class UserControllerInstructor {
         this.userServiceImpl = userServiceImpl;
     }
 
-    //+++ Sample controller action to create sample user -- group for this user has to be added manually in database.+++
-    @GetMapping("/sample")
-    @ResponseBody
-    public String createUser() {
-        User user = new User();
-        user.setName("admin");
-        user.setEmail("abc@g.pl");
-        user.setPassword("admin");
-        userServiceImpl.saveUser(user);
-        return "admin";
-    }
-    //++++++++++++++++++++++++++++++++++++ above only for development purpose!++++++++++++++++++++++++++++++++++++++++++
 
-    /*instructors can display their own details*/
+
     @GetMapping("/details")
-    // shows all users with attributes which are mutual for all users (name, id,  email)
+
     public String displayAll(Model model) {
         List<User> users = userServiceImpl.findAll();
 

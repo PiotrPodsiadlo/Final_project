@@ -25,18 +25,7 @@ public class UserControllerAdmin  {
         this.userServiceImpl = userServiceImpl;
     }
 
-    //+++ Sample controller action to create sample user -- group for this user has to be added manually in database.+++
-    @GetMapping("/sample")
-    @ResponseBody
-    public String createUser() {
-        User user = new User();
-        user.setName("admin");
-        user.setEmail("abc@g.pl");
-        user.setPassword("admin");
-        userServiceImpl.saveUser(user);
-        return "admin";
-    }
-    //++++++++++++++++++++++++++++++++++++ above only for development purpose!++++++++++++++++++++++++++++++++++++++++++
+
 
     @GetMapping("/r/{name}")
     @ResponseBody

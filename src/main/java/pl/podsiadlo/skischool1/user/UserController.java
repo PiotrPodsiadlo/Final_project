@@ -50,7 +50,7 @@ public class UserController {
         System.out.println(userServiceImpl.findAllByRole("ROLE_INSTRUCTOR"));
         List<User> users = userServiceImpl.findAllByRole("ROLE_INSTRUCTOR");
         List<User> collect = users.stream().filter(e -> e.getRoles().size() == 1).collect(Collectors.toList());
-        users.stream().forEach(e -> userServiceImpl.safeDelete(e));
+        collect.stream().forEach(e -> userServiceImpl.safeDelete(e));
 
 
     }

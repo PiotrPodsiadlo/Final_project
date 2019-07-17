@@ -13,8 +13,8 @@
     <title>Title</title>
 </head>
 <body>
-<form:form method="post" action="/qual/add" modelAttribute="qual">
-    <form:errors path="*" cssClass="error" />
+<form:form method="post" action="/les/add" modelAttribute="lesson">
+
     <div>NAME:</div><form:input path="name"/></br>
     <form:errors path="name" cssClass="error" />
 
