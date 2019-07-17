@@ -8,6 +8,7 @@ import pl.podsiadlo.skischool1.lesson.status.LessonStatus;
 import pl.podsiadlo.skischool1.user.User;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 @Data
 @Entity
@@ -23,10 +24,6 @@ public class Lesson {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private User customer;                                          // who is the student
-    @ManyToOne
-    @JoinColumn(name = "receptionist_id")
-    private User receptionist;                                      // who scheduled this lesson
-    private int durationMins;                                       // how many minutes/hours takes that lesson
     private int durationHours;
     @ManyToOne
     private Pricing price;                                          // price from the pricing list
@@ -38,4 +35,5 @@ public class Lesson {
     private LessonStatus status;                                    // lesson can be booked, paid, cancelled(after/before payment), refounded etc.
     @Enumerated(EnumType.STRING)                                    // we use enumerated type for location
     private Location location;
+    private BigDecimal discount;
 }

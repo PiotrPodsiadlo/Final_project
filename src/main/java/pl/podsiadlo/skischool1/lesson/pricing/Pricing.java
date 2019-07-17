@@ -18,4 +18,5 @@ public class Pricing {
     private BigDecimal amount;
     private String description;
 
+
 }

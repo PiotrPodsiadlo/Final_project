@@ -8,6 +8,7 @@ import pl.podsiadlo.skischool1.qualification.Qualification;
 import pl.podsiadlo.skischool1.role.Role;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.*;
 
 @Data       // default getter and setter from lombok
@@ -34,7 +35,8 @@ public class User {
     @Column(nullable = true, unique = false)
     private UserState status;                                                         // 0=not active (cannot be added to schedule) 1=active, can be added to schedule, 2=active, scheduled
     private int enabled;
-
+    private int lessonCount;                                                         // lesson count for user (both customers and instructors)
+    private BigDecimal earnings;                                                    // overall earnings of employee
 
     public Set<Role> getRoles() {
         return roles;

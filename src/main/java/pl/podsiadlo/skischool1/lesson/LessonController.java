@@ -1,6 +1,7 @@
 package pl.podsiadlo.skischool1.lesson;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -8,11 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.podsiadlo.skischool1.lesson.pricing.PricingRepository;
 import pl.podsiadlo.skischool1.lesson.status.LessonStatusRepository;
 import pl.podsiadlo.skischool1.qualification.Qualification;
 import pl.podsiadlo.skischool1.qualification.QualificationDto;
+import pl.podsiadlo.skischool1.user.User;
+import pl.podsiadlo.skischool1.user.UserRepository;
 
 import javax.validation.Valid;
+import java.security.cert.CollectionCertStoreParameters;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,14 +25,21 @@ import java.util.stream.Collectors;
 @RequestMapping("/les")
 public class LessonController {
 
+    private final
+
     LessonRepository lessonRepository;
     LessonService lessonService;
     LessonStatusRepository lessonStatusRepository;
+    PricingRepository pricingRepository;
+    UserRepository userRepository;
 
-    public LessonController(LessonRepository lessonRepository, LessonService lessonService, LessonStatusRepository lessonStatusRepository) {
+    @Autowired
+    public LessonController(LessonRepository lessonRepository, LessonService lessonService, LessonStatusRepository lessonStatusRepository, PricingRepository pricingRepository, UserRepository userRepository) {
         this.lessonRepository = lessonRepository;
         this.lessonService = lessonService;
         this.lessonStatusRepository = lessonStatusRepository;
+        this.pricingRepository = pricingRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/all")
@@ -43,16 +55,23 @@ public class LessonController {
 
     @GetMapping("/add")
     public String addLesson(Model model){
-        model.addAttribute("lesson", new Lesson());
+        List<String> instructors = userRepository.findAllByRolesName("ROLE_INSTRUCTOR").stream().map(e->e.getName()).collect(Collectors.toList());
+        List<String> customers = userRepository.findAllByRolesName("ROLE_CUSTOMER").stream().map(e->e.getName()).collect(Collectors.toList());
+        model.addAttribute("lessonDto", new LessonDto());
+        model.addAttribute("instructors", instructors);
+        model.addAttribute("custormers", customers);
+        model.addAttribute("prices", pricingRepository.findAll().stream().map(e->e.getAmount()).collect(Collectors.toList()));
+
 
         return "lesson/create";
     }
 
     @PostMapping("/add")
-    public String createLesson(@Valid QualificationDto qualificationDto, BindingResult result, Model model){
+    public String createLesson(@Valid LessonDto lessonDto, BindingResult result, Model model){
         if (result.hasErrors()) {
-//            model.addAttribute("qual", new QualificationDto());
-//            model.addAttribute("functions", functionService.findFunctions().stream().map(e->e.getFunctionType()).collect(Collectors.toList()));
+
+
+
             return "lesson/create";
         }
 

@@ -13,16 +13,30 @@
     <title>Title</title>
 </head>
 <body>
-<form:form method="post" action="/les/add" modelAttribute="lesson">
+<form:form method="post" action="/les/add" modelAttribute="lessonDto">
 
-    <div>NAME:</div><form:input path="name"/></br>
-    <form:errors path="name" cssClass="error" />
+    <div>time and date of lesson:</div><form:input path="dayAndHourOfLesson" type="datetime-local"/></br>
+    <form:errors path="dayAndHourOfLesson" cssClass="error" />
 
-    <div>SALARY:</div><form:input path="hourlySalary"/></br>
-    <form:errors path="hourlySalary" cssClass="error" />
+    <div>hours:</div><form:input path="durationHours"/></br>
+    <form:errors path="durationHours" cssClass="error" />
 
-    <div>FUNCTION:</div> <form:select path="function" multiple="true" items="${functions}"/></br>
-    <form:errors path="function" cssClass="error" />
+    <div>discount:</div><form:input path="discount" type="password"/></br>
+    <form:errors path="discount" cssClass="error" />
+
+
+
+
+    <div>instructor:</div> <form:select path="instructor" multiple="false" items="${instructors}"/></br>
+    <form:errors path="instructor" cssClass="error"/>
+
+
+    <div>customer:</div> <form:select path="customer" multiple="false" items="${customers}"/></br>
+    <form:errors path="customer" cssClass="error"/>
+
+
+    <div>price:</div> <form:select path="price" multiple="true" items="${prices}"/></br>
+    <form:errors path="price" cssClass="error"/>
 
     <div>
         <input type="submit" value="Save">

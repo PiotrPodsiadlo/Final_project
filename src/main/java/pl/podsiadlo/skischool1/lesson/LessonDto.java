@@ -7,23 +7,21 @@ import pl.podsiadlo.skischool1.lesson.status.LessonStatus;
 
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
 public class LessonDto {
 
     private Long id;
-    private Date scheduled;
     private String instructor;
     private String customer;
-    private String receptionist;
-    private int durationMins;
     private int durationHours;
-    private Double price;
-    private double instructorCost;
+    private BigDecimal price;
     private Date dayAndHourOfLesson;
     private int numberOfParticipants;
     private String status;
     private String location;
+    private BigDecimal discount;
 
 }
