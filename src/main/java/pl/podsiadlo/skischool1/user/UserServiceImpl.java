@@ -46,6 +46,7 @@ public class UserServiceImpl  {
     }
 
     public List<User> findUsrRoles(User u){
+//        return userRepository.findAllByRolesName("ROLE_ADMIN");
         return userRepository.findAllByRolesName("ROLE_ADMIN");
     }
 
