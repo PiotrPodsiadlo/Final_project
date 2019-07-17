@@ -36,7 +36,7 @@ public class QualificationController {
 
     @GetMapping("/add")
     public String addQual(Model model){
-        model.addAttribute("qual", new QualificationDto());
+        model.addAttribute("qualificationDto", new QualificationDto());
         model.addAttribute("functions", functionService.findFunctions().stream().map(e->e.getFunctionType()).collect(Collectors.toList()));
         return "qualification/create";
     }
@@ -44,7 +44,7 @@ public class QualificationController {
     @PostMapping("/add")
     public String createQual(@Valid QualificationDto qualificationDto, BindingResult result, Model model){
         if (result.hasErrors()) {
-            model.addAttribute("qual", qualificationDto);
+            model.addAttribute("qualificationDto", qualificationDto);
             model.addAttribute("functions", functionService.findFunctions().stream().map(e->e.getFunctionType()).collect(Collectors.toList()));
             return "qualification/create";
         }else{

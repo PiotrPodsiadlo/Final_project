@@ -15,8 +15,8 @@
 </head>
 <body>
 qwertyuiop
-<form:form method="post" action="/qual/add" modelAttribute="qual">
-    <form:errors path="*" cssClass="error" />
+<form:form method="post" action="/qual/add" modelAttribute="qualificationDto">
+
     <div>NAME:</div><form:input path="name"/></br>
     <form:errors path="name" cssClass="error" />
 
@@ -24,7 +24,8 @@ qwertyuiop
     <form:errors path="hourlySalary" cssClass="error" />
 
     <div>FUNCTION:</div> <form:select path="function" multiple="true" items="${functions}"/></br>
-    <form:errors path="function" cssClass="error" />
+    <form:errors path="function" cssClass="error"/>
+
 
     <div>
         <input type="submit" value="Save">
