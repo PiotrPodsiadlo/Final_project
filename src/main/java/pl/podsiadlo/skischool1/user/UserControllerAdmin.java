@@ -30,9 +30,9 @@ public class UserControllerAdmin  {
     @GetMapping("/r/{name}")
     @ResponseBody
     public String rolesOfUser(@PathVariable String name){
-        User user = userServiceImpl.findByUserName(name);
-        List<User> rolesOfUser = userServiceImpl.findUsrRoles(user);
-        return rolesOfUser.stream().map(e-> e.getName()).collect(Collectors.joining(", "));
+
+        List<User> usersWithRole = userServiceImpl.findAllByRole(name);
+        return usersWithRole.stream().map(e-> e.getName()).collect(Collectors.joining(", "));
     }
 
 
