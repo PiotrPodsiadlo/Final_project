@@ -38,7 +38,8 @@ public class UserServiceImpl  {
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
-        Role userRole = roleRepository.findByName("ROLE_INSTRUCTOR");
+        Role userRole = roleRepository.findByName("ROLE_CUSTOMER");
+
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         user.setEarnings(0);
         userRepository.save(user);

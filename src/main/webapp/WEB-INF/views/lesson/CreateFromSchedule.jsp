@@ -46,10 +46,8 @@
         <td>
             <div>instructor: </br>${instructor.getName()}</div></br>
         </td>
-        <td>
-            <div>number: </br>${lessonDto.unitNumber}</div></br>
-        </td>
 
+        <form:hidden path="instructor" value="${instructor.getName()}" />
 
 
         <td>

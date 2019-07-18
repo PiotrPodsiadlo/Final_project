@@ -28,15 +28,15 @@ public class UserController {
     @GetMapping("/sample")
     @ResponseBody
     public String createSampleUser() {
-        Role role = roleRepository.findByName("ROLE_INSTRUCTOR");
+        Role role = roleRepository.findByName("ROLE_CUSTOMER");
         System.out.println(role.getName());
         Set<Role> newUserRoles = new HashSet<>();
         newUserRoles.add(role);
         System.out.println(newUserRoles.size());
         for (int i = 0; i < 10; i++) {
             User user = new User();
-            user.setName("instructor: "+i);
-            user.setEmail("abc@g.pl");
+            user.setName("customer: "+i);
+            user.setEmail(i+"abc@g.pl"+i);
             user.setPassword("admin");
             userServiceImpl.saveUser(user);
             System.out.println(user.getRoles());
