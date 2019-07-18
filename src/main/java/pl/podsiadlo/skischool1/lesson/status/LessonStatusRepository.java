@@ -7,5 +7,5 @@ import pl.podsiadlo.skischool1.lesson.pricing.Pricing;
 
 @Repository
 public interface LessonStatusRepository extends JpaRepository<LessonStatus, Long> {
-    Pricing findFirstByName(String name);
+    LessonStatus findFirstByName(String name);
 }

@@ -8,6 +8,6 @@ import java.math.BigDecimal;
 
 @Repository
 public interface PricingRepository extends JpaRepository<Pricing, Long>{
-    Pricing findFirstByAmount(BigDecimal amount);
+    Pricing findFirstByAmount(double amount);
 }
 

@@ -57,9 +57,10 @@ public class LessonController {
     public String addLesson(Model model){
         List<String> instructors = userRepository.findAllByRolesName("ROLE_INSTRUCTOR").stream().map(e->e.getName()).collect(Collectors.toList());
         List<String> customers = userRepository.findAllByRolesName("ROLE_CUSTOMER").stream().map(e->e.getName()).collect(Collectors.toList());
+        System.out.println(customers);
         model.addAttribute("lessonDto", new LessonDto());
         model.addAttribute("instructors", instructors);
-        model.addAttribute("custormers", customers);
+        model.addAttribute("customers", customers);
         model.addAttribute("prices", pricingRepository.findAll().stream().map(e->e.getAmount()).collect(Collectors.toList()));
 
 
@@ -69,13 +70,10 @@ public class LessonController {
     @PostMapping("/add")
     public String createLesson(@Valid LessonDto lessonDto, BindingResult result, Model model){
         if (result.hasErrors()) {
-
-
-
             return "lesson/create";
         }
-
-        return "redirect:/lesson/all";
+        lessonService.createNew(lessonDto);
+        return "redirect:/les/all";
     }
 
 

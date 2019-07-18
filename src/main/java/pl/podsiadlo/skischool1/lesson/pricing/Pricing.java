@@ -15,7 +15,7 @@ public class Pricing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private BigDecimal amount;
+    private double amount;
     private String description;
 
 

@@ -11,36 +11,52 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
 <form:form method="post" action="/les/add" modelAttribute="lessonDto">
+<table>
+    <td>
+        <div>date of lesson:</div><form:input path="dayOfLesson" type="date" /></br>
+        <form:errors path="dayOfLesson" cssClass="error" />
 
-    <div>time and date of lesson:</div><form:input path="dayAndHourOfLesson" type="datetime-local"/></br>
-    <form:errors path="dayAndHourOfLesson" cssClass="error" />
-
-    <div>hours:</div><form:input path="durationHours"/></br>
-    <form:errors path="durationHours" cssClass="error" />
-
-    <div>discount:</div><form:input path="discount" type="password"/></br>
+        <div>time of lesson:</div><form:input path="timeOfLesson" type="time" /></br>
+        <form:errors path="timeOfLesson" cssClass="error" />
+    </td>
+    <td>
+        <div>hours:</div><form:input path="durationHours" type="number"/></br>
+        <form:errors path="durationHours" cssClass="error" />
+    </td>
+    <td>
+        <div>additional info:</div><form:textarea path="additionalInfo"/></br>
+        <form:errors path="additionalInfo" cssClass="error" />
+    </td>
+    <td>
+    <div>discount:</div><form:input path="discount" type="text"/></br>
     <form:errors path="discount" cssClass="error" />
-
-
-
-
+    </td>
+    <td>
     <div>instructor:</div> <form:select path="instructor" multiple="false" items="${instructors}"/></br>
     <form:errors path="instructor" cssClass="error"/>
-
-
+    </td>
+    <td>
     <div>customer:</div> <form:select path="customer" multiple="false" items="${customers}"/></br>
     <form:errors path="customer" cssClass="error"/>
-
-
+    </td>
+    <td>
     <div>price:</div> <form:select path="price" multiple="true" items="${prices}"/></br>
     <form:errors path="price" cssClass="error"/>
-
+    </td>
+    <td>
     <div>
         <input type="submit" value="Save">
     </div>
+    </td>
+</table>
 </form:form>
 
 </body>
