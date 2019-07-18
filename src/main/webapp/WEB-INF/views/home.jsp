@@ -42,6 +42,7 @@
                     ${les.timeOfLesson}</br>
                 </td>
             </c:forEach>
+
         </tr>
     </c:forEach>
 
