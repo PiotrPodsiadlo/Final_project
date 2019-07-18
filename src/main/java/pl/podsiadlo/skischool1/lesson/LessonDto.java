@@ -22,6 +22,8 @@ public class LessonDto {
     private String additionalInfo;
 
 
+    //used only for view
+    private String scheduled;
 
 
 }

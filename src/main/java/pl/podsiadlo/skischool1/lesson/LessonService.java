@@ -10,12 +10,18 @@ import pl.podsiadlo.skischool1.user.User;
 import pl.podsiadlo.skischool1.user.UserRepository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
+import static java.time.LocalDate.now;
 
 @Service
 @Transactional
 public class LessonService {
+
+
 
     LessonStatusRepository lessonStatusRepository;
     LessonRepository lessonRepository;
@@ -33,9 +39,11 @@ public class LessonService {
 
 
     public void createNew(LessonDto lessonDto){
+        LocalDateTime scheduleDate = LocalDateTime.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");            // parsing date cos Dto accepts String
-
         Lesson lesson = new Lesson();
+        lesson.setScheduled(scheduleDate);
+
         lesson.setDayOfLesson(LocalDate.parse(lessonDto.getDayOfLesson(), dateFormatter));
         lesson.setTimeOfLesson(LocalTime.parse(lessonDto.getTimeOfLesson()));
         lesson.setAdditionalInfo(lessonDto.getAdditionalInfo());
@@ -44,13 +52,24 @@ public class LessonService {
         lesson.setDiscount(lessonDto.getDiscount());
         lesson.setInstructor(userRepository.findByName(lessonDto.getInstructor()));
         lesson.setCustomer(userRepository.findByName(lessonDto.getCustomer()));
-
         lesson.setTotalPrice(lesson.getDurationHours(), lesson.getPrice(), lesson.getDiscount());
         lesson.setStatus(lessonStatusRepository.findFirstByName("booked"));
         lessonRepository.save(lesson);
-//        User instructor = userRepository.findByName(lessonDto.getInstructor());
-//        User customer = userRepository.findByName(lessonDto.getCustomer());
+    }
 
 
+
+    public LessonDto findById(Long id){
+        Lesson lesson = lessonRepository.getOne(id);
+        LessonDto lessonDto = new LessonDto();
+        lessonDto.setAdditionalInfo(lesson.getAdditionalInfo());
+        lessonDto.setCustomer(lesson.getCustomer().getName());
+        lessonDto.setInstructor(lesson.getInstructor().getName());
+        lessonDto.setDayOfLesson(lesson.getDayOfLesson().toString());
+        lessonDto.setTimeOfLesson(lesson.getTimeOfLesson().toString());
+        lessonDto.setScheduled(lesson.getScheduled().toString());
+        lessonDto.setStatus(lesson.getStatus().toString());
+
+        return lessonDto;
     }
 }

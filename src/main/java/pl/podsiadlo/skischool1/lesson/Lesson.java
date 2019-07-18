@@ -10,6 +10,7 @@ import pl.podsiadlo.skischool1.user.User;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 @Data
@@ -19,7 +20,7 @@ public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date scheduled;                                         // time of the lesson
+    private LocalDateTime scheduled;                                         // time of the lesson
     @ManyToOne
     @JoinColumn(name = "instructor_id")
     private User instructor;                                        // who teaches on this lesson
@@ -42,6 +43,8 @@ public class Lesson {
     private String additionalInfo;
 //  calculated
     private double totalPrice;
+
+
 
     public Lesson setTotalPrice(double durationHours, Pricing price, double discount) {
         this.totalPrice = (durationHours* price.getAmount() - discount);

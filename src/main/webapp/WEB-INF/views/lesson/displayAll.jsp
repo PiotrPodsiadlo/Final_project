@@ -15,7 +15,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1><spring:message code="qual.list"/></h1>
+<h1>list of all lessons</h1>
 
 <c:forEach items="${quals}" var="qual">
     <tr>

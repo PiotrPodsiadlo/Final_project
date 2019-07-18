@@ -118,7 +118,7 @@ public class LessonController {
     // details of specific lesson
     @GetMapping("/view/{id}")
     public String vievLesson(Model model, @PathVariable Long id) {
-
+       // Lesson lesson = lessonService.getOne(id);
         model.addAttribute("lesson");
         return "lesson/edit";
     }
