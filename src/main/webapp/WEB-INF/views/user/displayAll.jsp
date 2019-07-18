@@ -22,6 +22,11 @@
         <td><c:out value="${user.getId()}"/></td>
         <td><c:out value="${user.getName()}"/></td>
         <td><c:out value="${user.getEmail()}"/></td>
+        <c:forEach items="${user.getRoles()}" var="role">
+            <td><c:out value="${role.getName()} , "/></td>
+        </c:forEach>
+        <td><c:out value="${user.earnings}"/></td>
+
 <%--        <td><a href="/qual/delete/${qual.getId()}">delete</a></td>--%>
 <%--        <td><a href="/qual/edit/${qual.getId()}">edit</a></td>--%>
         </br>

@@ -40,6 +40,7 @@ public class UserServiceImpl  {
         user.setEnabled(1);
         Role userRole = roleRepository.findByName("ROLE_INSTRUCTOR");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        user.setEarnings(0);
         userRepository.save(user);
     }
 /*SERVICE ONLY FOR DEVELOPEMENT PURPOSE !!!!!!!!!*/
