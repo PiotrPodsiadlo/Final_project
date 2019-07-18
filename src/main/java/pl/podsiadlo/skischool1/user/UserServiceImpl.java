@@ -38,7 +38,7 @@ public class UserServiceImpl  {
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
-        Role userRole = roleRepository.findByName("ROLE_CUSTOMER");
+        Role userRole = roleRepository.findByName("ROLE_RECEPTION");
 
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         user.setEarnings(0);
@@ -72,11 +72,14 @@ public class UserServiceImpl  {
         user.setPassword(userDto.getPassword());
         user.setSalary(userDto.getSalary());
         user.setStatus(UserState.valueOf(userDto.getStatus()));
+
         Set<Role> newUserRoles = new HashSet<>();
         userDto.getRoles().stream().map(e-> roleRepository.findByName(e)).forEach(e -> newUserRoles.add(e));
         user.setRoles(newUserRoles);
+
         Set <Qualification> newUserQualifications = new HashSet<>();
         userDto.getQualifications().stream().map(e-> qualificationService.findByName(e)).forEach(e-> newUserQualifications.add(e) );
+
         user.setEnabled(userDto.getEnabled());
         user.setEarnings(0);
         userRepository.save(user);

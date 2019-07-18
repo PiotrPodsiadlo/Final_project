@@ -63,7 +63,6 @@ public class LessonController {
 
         return "lesson/create";
     }
-
     @PostMapping("/add")
     public String createLesson(@Valid LessonDto lessonDto, BindingResult result, Model model){
         if (result.hasErrors()) {
@@ -112,9 +111,9 @@ public class LessonController {
     }
 
 
-    // details of specific lesson
+
     @GetMapping("/view/{id}")
-//    @ResponseBody
+
     public String vievLesson(Model model, @PathVariable Long id) {
         LessonDto lesson = lessonService.findById(id);
         model.addAttribute("lesson", lesson);
