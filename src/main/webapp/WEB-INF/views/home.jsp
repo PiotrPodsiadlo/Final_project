@@ -29,35 +29,21 @@
 
 <table>
 
-    <th>INTSTRUCTORS/LESSONS</th>
-
-<%--    <c:forEach items="${map}" var="map">--%>
-<%--        <tr>--%>
-<%--            <th style="width: 100px"><c:out value="${map.key.getName()}"/></th>--%>
-
-<%--            <c:forEach items="${map.key}" var="mapkey">--%>
-
-<%--                <td style="width: 100px"><c:out value="${mapkey.getValue()}"/></td>--%>
-
-<%--            </c:forEach>--%>
-<%--        </tr>--%>
-<%--    </c:forEach>--%>
 
     <c:forEach items="${map}" var="entry">
-        Instructor = ${entry.key.getName()}, <br>
-        <c:forEach items="${entry.value}" var="les">
-
-
-          !!!!LESSON =  ${les.id}
-<%--            <c:forEach items="${les}" var="oneLesson">--%>
-<%--                ${oneLesson.getId()}--%>
-<%--            </c:forEach>--%>
-
-        </c:forEach>
+        <tr>
+            <td>
+                Instructor = ${entry.key.getName()}
+            </td>
+            <c:forEach items="${entry.value}" var="les">
+                <td>
+                    ${les.id} </br>
+                    ${les.dayOfLesson}</br>
+                    ${les.timeOfLesson}</br>
+                </td>
+            </c:forEach>
+        </tr>
     </c:forEach>
-
-
-
 
 
 </table>
