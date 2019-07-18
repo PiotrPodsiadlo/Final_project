@@ -72,7 +72,7 @@ public class LessonService {
         lessonDto.setInstructor(lesson.getInstructor().getName());
         lessonDto.setDayOfLesson(lesson.getDayOfLesson().toString());
         lessonDto.setTimeOfLesson(lesson.getTimeOfLesson().toString());
-        lessonDto.setScheduled(lesson.getScheduled().getDayOfWeek() + " " +lesson.getScheduled().getHour()+ " " + lesson.getScheduled().getMinute());
+        lessonDto.setScheduled(lesson.getScheduled().getDayOfWeek() + " " +lesson.getScheduled().getHour()+ " : " + lesson.getScheduled().getMinute());
         lessonDto.setStatus(lesson.getStatus().getName());
         lessonDto.setDiscount(lesson.getDiscount());
         lessonDto.setLocation(lesson.getLocation().toString());
