@@ -42,7 +42,17 @@
             <c:out value="${user.getName()}"/>
         </td>
         <c:forEach items="${units}" var="unit">
-            <td style="width: 100px"><a href="/les/create/${user.getId()}/${unit}">dodaj lekcje</a></td>
+            <c:choose>
+                <c:when test="${false}">
+                    <td style="width: 100px"><a href="/les/create/${user.getId()}/${unit}">dodaj lekcje</a></td>
+                </c:when>
+
+                <c:otherwise>
+                    <td style="width: 100px"><a href="/les/create/${user.getId()}/${unit}">szczegóły</a></td>
+                </c:otherwise>
+            </c:choose>
+
+
         </c:forEach>
     </tr>
 </c:forEach>
@@ -52,3 +62,4 @@
 
 </body>
 </html>
+

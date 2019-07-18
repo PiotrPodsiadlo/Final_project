@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 import static java.time.LocalDate.now;
 
@@ -82,5 +83,7 @@ public class LessonService {
         return lessonDto;
     }
 
-
+    public List<Lesson> findAll(){
+        return lessonRepository.findAll();
+    }
 }
