@@ -49,7 +49,9 @@ public class UserServiceImpl  {
         return userRepository.findAll();
     }
 
-
+    public User findOneById(Long id){
+        return userRepository.getOne(id);
+    }
 
     public List<User> findAllByRole(String role){
         return userRepository.findAllByRolesName(role);
@@ -74,6 +76,13 @@ public class UserServiceImpl  {
         Set <Qualification> newUserQualifications = new HashSet<>();
         userDto.getQualifications().stream().map(e-> qualificationService.findByName(e)).forEach(e-> newUserQualifications.add(e) );
         user.setEnabled(userDto.getEnabled());
+        user.setEarnings(0);
+        userRepository.save(user);
+    }
+
+    public void activate(Long id){
+        User user = userRepository.getOne(id);
+        user.setEnabled(1);
         userRepository.save(user);
     }
 }

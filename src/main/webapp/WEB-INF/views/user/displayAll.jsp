@@ -17,11 +17,11 @@
 <body>
 <h1><spring:message code="usr.list"/></h1>
 
-<c:forEach items="${users}" var="qual">
+<c:forEach items="${users}" var="user">
     <tr>
-        <td><c:out value="${qual.getId()}"/></td>
-        <td><c:out value="${qual.getName()}"/></td>
-        <td><c:out value="${qual.getEmail()}"/></td>
+        <td><c:out value="${user.getId()}"/></td>
+        <td><c:out value="${user.getName()}"/></td>
+        <td><c:out value="${user.getEmail()}"/></td>
 <%--        <td><a href="/qual/delete/${qual.getId()}">delete</a></td>--%>
 <%--        <td><a href="/qual/edit/${qual.getId()}">edit</a></td>--%>
         </br>

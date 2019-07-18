@@ -41,10 +41,8 @@ public class UserControllerAdmin  {
 
 
     @GetMapping("/all")
-    // shows all users with ROLE_ADMIN
     public String displayAllAdmin(Model model) {
-        List<User> users = new ArrayList<>();
-
+        List<User> users = userServiceImpl.findAll();
         model.addAttribute("users", users);
         return "user/displayAll";
     }
@@ -96,7 +94,8 @@ public class UserControllerAdmin  {
 
     /* only admin can activate employees created by reception workers */
     @GetMapping("/activate/{id}")
-    public String activateEmployee(){
+    public String activateEmployee(@PathVariable Long id, Model model){
+        userServiceImpl.activate(id);
         return "a";
     }
 }

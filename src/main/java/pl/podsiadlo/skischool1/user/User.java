@@ -36,7 +36,7 @@ public class User {
     private UserState status;                                                         // 0=not active (cannot be added to schedule) 1=active, can be added to schedule, 2=active, scheduled
     private int enabled;
     private int lessonCount;                                                         // lesson count for user (both customers and instructors)
-    private BigDecimal earnings;                                                    // overall earnings of employee
+    private double earnings;                                                    // overall earnings of employee
 
     public Set<Role> getRoles() {
         return roles;

@@ -59,8 +59,6 @@
         <th>total price:</th>
         <td><c:out value="${lesson.totalPrice}"/></td>
     </tr>
-
-
 </table>
 </body>
 </html>
