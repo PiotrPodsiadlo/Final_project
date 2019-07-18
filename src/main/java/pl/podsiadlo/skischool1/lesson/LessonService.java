@@ -65,13 +65,15 @@ public class LessonService {
     public LessonDto findById(Long id){
         Lesson lesson = lessonRepository.getOne(id);
         LessonDto lessonDto = new LessonDto();
+        lessonDto.setId(lesson.getId());
+        lessonDto.setDurationHours(lesson.getDurationHours());
         lessonDto.setAdditionalInfo(lesson.getAdditionalInfo());
         lessonDto.setCustomer(lesson.getCustomer().getName());
         lessonDto.setInstructor(lesson.getInstructor().getName());
         lessonDto.setDayOfLesson(lesson.getDayOfLesson().toString());
         lessonDto.setTimeOfLesson(lesson.getTimeOfLesson().toString());
         lessonDto.setScheduled(lesson.getScheduled().getDayOfWeek() + " " +lesson.getScheduled().getHour()+ " " + lesson.getScheduled().getMinute());
-        lessonDto.setStatus(lesson.getStatus().toString());
+        lessonDto.setStatus(lesson.getStatus().getName());
         lessonDto.setDiscount(lesson.getDiscount());
         lessonDto.setLocation(lesson.getLocation().toString());
         lessonDto.setTotalPrice(lesson.getTotalPrice());

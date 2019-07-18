@@ -117,10 +117,10 @@ public class LessonController {
 
     // details of specific lesson
     @GetMapping("/view/{id}")
-    @ResponseBody
+//    @ResponseBody
     public String vievLesson(Model model, @PathVariable Long id) {
         LessonDto lesson = lessonService.findById(id);
-
-        return lesson.toString();
+        model.addAttribute("lesson", lesson);
+        return "lesson/SingleLesson";
     }
 }

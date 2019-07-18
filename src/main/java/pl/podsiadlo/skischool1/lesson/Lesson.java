@@ -45,7 +45,7 @@ public class Lesson {
 
 
     public Lesson setTotalPrice(double durationHours, Pricing price, double discount) {
-        this.totalPrice = (durationHours* price.getAmount() - discount);
+        this.totalPrice = (durationHours * price.getAmount() - discount);
         return this;
     }
 }
