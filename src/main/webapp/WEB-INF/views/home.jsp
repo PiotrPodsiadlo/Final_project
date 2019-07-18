@@ -44,9 +44,15 @@
 <%--    </c:forEach>--%>
 
     <c:forEach items="${map}" var="entry">
-        Key = ${entry.key}, <br>
+        Instructor = ${entry.key.getName()}, <br>
         <c:forEach items="${entry.value}" var="les">
-            ${les}
+
+
+          !!!!LESSON =  ${les.id}
+<%--            <c:forEach items="${les}" var="oneLesson">--%>
+<%--                ${oneLesson.getId()}--%>
+<%--            </c:forEach>--%>
+
         </c:forEach>
     </c:forEach>
 
