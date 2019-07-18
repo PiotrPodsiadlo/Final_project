@@ -5,10 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import pl.podsiadlo.skischool1.enums.Location;
+import pl.podsiadlo.skischool1.enums.UserState;
 import pl.podsiadlo.skischool1.lesson.pricing.PricingRepository;
 import pl.podsiadlo.skischool1.lesson.status.LessonStatusRepository;
 import pl.podsiadlo.skischool1.qualification.Qualification;
@@ -62,6 +61,7 @@ public class LessonController {
         model.addAttribute("instructors", instructors);
         model.addAttribute("customers", customers);
         model.addAttribute("prices", pricingRepository.findAll().stream().map(e->e.getAmount()).collect(Collectors.toList()));
+        model.addAttribute("location", Location.values());
 
 
         return "lesson/create";
@@ -117,9 +117,10 @@ public class LessonController {
 
     // details of specific lesson
     @GetMapping("/view/{id}")
+    @ResponseBody
     public String vievLesson(Model model, @PathVariable Long id) {
-       // Lesson lesson = lessonService.getOne(id);
-        model.addAttribute("lesson");
-        return "lesson/edit";
+        LessonDto lesson = lessonService.findById(id);
+
+        return lesson.toString();
     }
 }

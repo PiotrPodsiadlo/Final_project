@@ -33,8 +33,6 @@ public class Lesson {
     private double instructorCost;
     private LocalDate dayOfLesson;
     private LocalTime timeOfLesson;
-    @Column(nullable = true, unique = false)
-    private int numberOfParticipants;                               //number of participants means that one customer can book lesson for many participants, one who booked a lesson is a customer and can be added as an user in database
     @ManyToOne
     private LessonStatus status;                                    // lesson can be booked, paid, cancelled(after/before payment), refounded etc.
     @Enumerated(EnumType.STRING)                                    // we use enumerated type for location

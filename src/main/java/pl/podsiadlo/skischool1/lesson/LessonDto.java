@@ -15,7 +15,6 @@ public class LessonDto {
     private double price;
     private String dayOfLesson;
     private String timeOfLesson;
-    private int numberOfParticipants;
     private String status;
     private String location;
     private double discount;
@@ -24,6 +23,6 @@ public class LessonDto {
 
     //used only for view
     private String scheduled;
-
+    private double totalPrice;
 
 }

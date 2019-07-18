@@ -48,8 +48,12 @@
     <form:errors path="customer" cssClass="error"/>
     </td>
     <td>
-    <div>price:</div> <form:select path="price" multiple="true" items="${prices}"/></br>
+    <div>price:</div> <form:select path="price" multiple="false" items="${prices}"/></br>
     <form:errors path="price" cssClass="error"/>
+    </td>
+    <td>
+        <div>location:</div> <form:select path="location" multiple="false" items="${location}"/></br>
+        <form:errors path="location" cssClass="error"/>
     </td>
     <td>
     <div>
