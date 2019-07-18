@@ -41,7 +41,7 @@ public class Lesson {
     private String additionalInfo;
 //  calculated
     private double totalPrice;
-    private int unitNumber;
+
 
 
 

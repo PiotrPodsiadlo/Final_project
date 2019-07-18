@@ -106,9 +106,7 @@ public class LessonService {
             instructorsWithTheirLessons.put(instructor, allLessonsOfThisInstructor);
         }
 
-
 //        Map<User, List<Lesson>> collect = allLesson.stream().collect(Collectors.groupingBy(Lesson::getInstructor));
-//
 //        System.out.println(collect);
 //        return collect;
 

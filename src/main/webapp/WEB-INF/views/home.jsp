@@ -33,7 +33,8 @@
     <c:forEach items="${map}" var="entry">
         <tr>
             <td>
-                Instructor = ${entry.key.getName()}
+                <a href="/les/create/${entry.key.getId()}/1">
+                Instructor = ${entry.key.getName()}</a>
             </td>
             <c:forEach items="${entry.value}" var="les">
                 <td>

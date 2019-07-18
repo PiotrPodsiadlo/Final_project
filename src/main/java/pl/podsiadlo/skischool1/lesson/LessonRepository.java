@@ -7,6 +7,5 @@ import pl.podsiadlo.skischool1.qualification.Qualification;
 @Repository
 public interface LessonRepository extends JpaRepository<Lesson, Long> {
 
-    //Lesson findByName(String username);
-    Lesson findFirstByUnitNumber(int unitNumber);
+
 }
