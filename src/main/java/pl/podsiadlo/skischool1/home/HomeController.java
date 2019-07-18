@@ -37,8 +37,8 @@ public class HomeController {
     @RequestMapping("/home")
     public String home(Model model) {
         List<User> users = userServiceImpl.findAllByRole("ROLE_INSTRUCTOR");
-        List <String> hours = Arrays.asList("1","2","3","4","5","6","7","8","9","10","11","12");
-        model.addAttribute("hours", hours);
+        List <String> units = Arrays.asList("1","2","3","4","5","6","7","8","9","10","11","12");
+        model.addAttribute("units", units);
         model.addAttribute("users", users);
         return "home";
     }

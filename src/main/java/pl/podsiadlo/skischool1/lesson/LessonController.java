@@ -124,7 +124,22 @@ public class LessonController {
         return "lesson/SingleLesson";
     }
 
+    @GetMapping("/create/{instructorId}/{unitId}")
+    public String createLessonInSchedule(Model model, @PathVariable Long instructorId, @PathVariable int unitId) {
+        List<String> customers = userRepository.findAllByRolesName("ROLE_CUSTOMER").stream().map(e->e.getName()).collect(Collectors.toList());
+        System.out.println(customers);
+        User userInstructor = userRepository.getOne(instructorId);
+        LessonDto lessonDto = new LessonDto();
+        lessonDto.setUnitNumber(unitId);
+        lessonDto.setInstructor(userInstructor.getName());
+        model.addAttribute("lessonDto", lessonDto);
+        model.addAttribute("instructor", userInstructor);
+        model.addAttribute("customers", customers);
+        model.addAttribute("prices", pricingRepository.findAll().stream().map(e->e.getAmount()).collect(Collectors.toList()));
+        model.addAttribute("location", Location.values());
 
+        return "lesson/CreateFromSchedule";
+    }
 
 
 }

@@ -31,18 +31,18 @@
 <table>
 
 <th>INTSTRUCTORS/LESSONS</th>
-<c:forEach items="${hours}" var="hour">
-        <th style="width: 100px"><c:out value="${hour}"/></th>
+<c:forEach items="${units}" var="unit">
+        <th style="width: 100px"><c:out value="${unit}"/></th>
 </c:forEach>
 <tc>
-<c:forEach items="${users}" var="qual">
+<c:forEach items="${users}" var="user">
     <tr>
         <td>
-            <c:out value="${qual.getId()}"/>
-            <c:out value="${qual.getName()}"/>
+            <c:out value="${user.getId()}"/>
+            <c:out value="${user.getName()}"/>
         </td>
-        <c:forEach items="${hours}" var="hour">
-            <td style="width: 100px"><a href="/qual/add">dodaj lekcje</a></td>
+        <c:forEach items="${units}" var="unit">
+            <td style="width: 100px"><a href="/les/create/${user.getId()}/${unit}">dodaj lekcje</a></td>
         </c:forEach>
     </tr>
 </c:forEach>

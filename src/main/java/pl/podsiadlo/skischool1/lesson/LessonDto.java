@@ -19,7 +19,7 @@ public class LessonDto {
     private String location;
     private double discount;
     private String additionalInfo;
-
+    private int unitNumber;             // unit number to place the lesson in schedule
 
     //used only for view
     private String scheduled;
