@@ -78,6 +78,8 @@ public class UserServiceImpl  {
         user.setEnabled(userDto.getEnabled());
         user.setEarnings(0);
         userRepository.save(user);
+
+
     }
 
     public void activate(Long id){
