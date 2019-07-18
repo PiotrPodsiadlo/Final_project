@@ -10,13 +10,17 @@ import pl.podsiadlo.skischool1.lesson.status.LessonStatus;
 import pl.podsiadlo.skischool1.lesson.status.LessonStatusRepository;
 import pl.podsiadlo.skischool1.user.User;
 import pl.podsiadlo.skischool1.user.UserRepository;
+import pl.podsiadlo.skischool1.user.UserServiceImpl;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static java.time.LocalDate.now;
 
@@ -30,14 +34,16 @@ public class LessonService {
     LessonRepository lessonRepository;
     UserRepository userRepository;
     PricingRepository pricingRepository;
+    UserServiceImpl userServiceImpl;
 
 
 
-    public LessonService(LessonStatusRepository lessonStatusRepository, LessonRepository lessonRepository, UserRepository userRepository, PricingRepository pricingRepository) {
+    public LessonService(LessonStatusRepository lessonStatusRepository, LessonRepository lessonRepository, UserRepository userRepository, PricingRepository pricingRepository, UserServiceImpl userServiceImpl) {
         this.lessonStatusRepository = lessonStatusRepository;
         this.lessonRepository = lessonRepository;
         this.userRepository = userRepository;
         this.pricingRepository = pricingRepository;
+        this.userServiceImpl = userServiceImpl;
     }
 
 
@@ -86,4 +92,31 @@ public class LessonService {
     public List<Lesson> findAll(){
         return lessonRepository.findAll();
     }
+
+
+    public Map<User, List<Lesson>> convertScheduleToMap() {
+        List<User> allInstructor = userServiceImpl.findAllByRole("ROLE_INSTRUCTOR");
+        List<Lesson> allLesson = lessonRepository.findAll();
+        Map<User, List<Lesson>> instructorsWithTheirLessons = new HashMap<>();
+
+        for (User instructor : allInstructor) {
+            List<Lesson> allLessonsOfThisInstructor = allLesson.stream()
+                    .filter(e -> e.getInstructor().getId().equals( instructor.getId()))
+                    .collect(Collectors.toList());
+            instructorsWithTheirLessons.put(instructor, allLessonsOfThisInstructor);
+        }
+
+
+//        Map<User, List<Lesson>> collect = allLesson.stream().collect(Collectors.groupingBy(Lesson::getInstructor));
+//
+//        System.out.println(collect);
+//        return collect;
+
+        return instructorsWithTheirLessons;
+    }
+
+
+
+
+
 }

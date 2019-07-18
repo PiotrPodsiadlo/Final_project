@@ -1,15 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: piotr
-  Date: 15.07.19
-  Time: 16:52
-  To change this template use File | Settings | File Templates.
+  Date: 18.07.19
+  Time: 16:26
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<h1><spring:message code="app.title"/></h1>--%>
+<%--<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>--%>
 <html>
 <head>
     <style>
@@ -30,36 +29,32 @@
 
 <table>
 
-<th>INTSTRUCTORS/LESSONS</th>
-<c:forEach items="${units}" var="unit">
-        <th style="width: 100px"><c:out value="${unit}"/></th>
-</c:forEach>
-<tc>
-<c:forEach items="${users}" var="user">
-    <tr>
-        <td>
-            <c:out value="${user.getId()}"/>
-            <c:out value="${user.getName()}"/>
-        </td>
-        <c:forEach items="${units}" var="unit">
-            <c:choose>
-                <c:when test="${false}">
-                    <td style="width: 100px"><a href="/les/create/${user.getId()}/${unit}">dodaj lekcje</a></td>
-                </c:when>
+    <th>INTSTRUCTORS/LESSONS</th>
 
-                <c:otherwise>
-                    <td style="width: 100px"><a href="/les/create/${user.getId()}/${unit}">szczegóły</a></td>
-                </c:otherwise>
-            </c:choose>
+<%--    <c:forEach items="${map}" var="map">--%>
+<%--        <tr>--%>
+<%--            <th style="width: 100px"><c:out value="${map.key.getName()}"/></th>--%>
 
+<%--            <c:forEach items="${map.key}" var="mapkey">--%>
 
+<%--                <td style="width: 100px"><c:out value="${mapkey.getValue()}"/></td>--%>
+
+<%--            </c:forEach>--%>
+<%--        </tr>--%>
+<%--    </c:forEach>--%>
+
+    <c:forEach items="${map}" var="entry">
+        Key = ${entry.key}, <br>
+        <c:forEach items="${entry.value}" var="les">
+            ${les}
         </c:forEach>
-    </tr>
-</c:forEach>
-</tc>
+    </c:forEach>
+
+
+
+
 
 </table>
 
 </body>
 </html>
-

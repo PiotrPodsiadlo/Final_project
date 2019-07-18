@@ -7,16 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.podsiadlo.skischool1.enums.Location;
-import pl.podsiadlo.skischool1.enums.UserState;
 import pl.podsiadlo.skischool1.lesson.pricing.PricingRepository;
 import pl.podsiadlo.skischool1.lesson.status.LessonStatusRepository;
-import pl.podsiadlo.skischool1.qualification.Qualification;
 import pl.podsiadlo.skischool1.qualification.QualificationDto;
 import pl.podsiadlo.skischool1.user.User;
 import pl.podsiadlo.skischool1.user.UserRepository;
 
 import javax.validation.Valid;
-import java.security.cert.CollectionCertStoreParameters;
 import java.util.List;
 import java.util.stream.Collectors;
 
