@@ -42,7 +42,18 @@
     <tr>
         <th>status:</th>
         <td><c:out value="${lesson.status}"/></td>
+        <td>
+            <form:form method="post" action="/les/setState/${lesson.id}/2" >
+                    <input type="submit" value="Mark as paid">
+            </form:form>
+            <form:form method="post" action="/les/setState/${lesson.id}/2" >
+                <input type="submit" value="Mark as canceled">
+            </form:form>
+        </td>
     </tr>
+
+
+
     <tr>
         <th>location:</th>
         <td><c:out value="${lesson.location}"/></td>

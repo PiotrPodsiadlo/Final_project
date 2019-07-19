@@ -100,6 +100,14 @@ public class LessonController {
 *  LessonStatusRepository injection required, if status changed to paid, there is no option to mark it as canceled
 * */
 
+    @GetMapping("/view/{id}")
+
+    public String vievLesson(Model model, @PathVariable Long id) {
+        LessonDto lesson = lessonService.findById(id);
+        model.addAttribute("lesson", lesson);
+        return "lesson/SingleLesson";
+    }
+
     @PostMapping("/setState/{id}/{state}")
     public String cancelLesson(Model model, @PathVariable Long id, @PathVariable Long stateId) {
         Lesson lesson = lessonRepository.getOne(id);
@@ -112,13 +120,6 @@ public class LessonController {
 
 
 
-    @GetMapping("/view/{id}")
-
-    public String vievLesson(Model model, @PathVariable Long id) {
-        LessonDto lesson = lessonService.findById(id);
-        model.addAttribute("lesson", lesson);
-        return "lesson/SingleLesson";
-    }
 
     @GetMapping("/create/{instructorId}")
     public String createLessonInSchedule(Model model, @PathVariable Long instructorId) {
