@@ -42,6 +42,7 @@
     <tr>
         <th>status:</th>
         <td><c:out value="${lesson.status}"/></td>
+        <c:if test = "${lesson.status.equals('booked') }">
         <td>
             <form:form method="post" action="/les/setState/${lesson.id}/2" >
                     <input type="submit" value="Mark as paid">
@@ -50,6 +51,8 @@
                 <input type="submit" value="Mark as canceled">
             </form:form>
         </td>
+        </c:if>
+
     </tr>
 
 
