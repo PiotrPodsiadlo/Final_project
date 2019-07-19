@@ -18,14 +18,16 @@
 <h1>list of all lessons</h1>
 
 <c:forEach items="${quals}" var="qual">
-    <tr>
-        <td><c:out value="${qual.getFunction()}"/></td>
-        <td><c:out value="${qual.getName()}"/></td>
-        <td><c:out value="${qual.getHourlySalary()}"/></td>
-        <td><a href="/qual/delete/${qual.getId()}">delete</a></td>
-        <td><a href="/qual/edit/${qual.getId()}">edit</a></td>
-        </br>
-    </tr>
+
+        <tr>
+            <td><c:out value="${qual.getFunction()}"/></td>
+            <td><c:out value="${qual.getName()}"/></td>
+            <td><c:out value="${qual.getHourlySalary()}"/></td>
+            <td><a href="/qual/delete/${qual.getId()}">delete</a></td>
+            <td><a href="/qual/edit/${qual.getId()}">edit</a></td>
+            </br>
+        </tr>
+
 </c:forEach>
 </body>
 </html>

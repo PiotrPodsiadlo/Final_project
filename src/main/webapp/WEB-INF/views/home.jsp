@@ -37,11 +37,15 @@
                 Instructor = ${entry.key.getName()}</a>
             </td>
             <c:forEach items="${entry.value}" var="les">
+
                 <td>
+                    <a href="/les/view/${les.id}">DETAILS</a>
                     ${les.id} </br>
                     ${les.dayOfLesson}</br>
                     ${les.timeOfLesson}</br>
+
                 </td>
+
             </c:forEach>
 
         </tr>
