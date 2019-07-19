@@ -115,7 +115,7 @@ public class LessonController {
         lesson.setStatus(lessonStatusRepository.getOne(stateId));
         lessonRepository.save(lesson);
         model.addAttribute("lesson");
-        return "lesson/all";
+        return "home";
     }
 
 
