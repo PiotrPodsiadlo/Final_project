@@ -43,6 +43,7 @@
                     ${les.id} </br>
                     ${les.dayOfLesson}</br>
                     ${les.timeOfLesson}</br>
+                    ${les.status.name}</br>
 
                 </td>
 
