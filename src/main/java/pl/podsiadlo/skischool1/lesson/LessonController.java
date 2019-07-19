@@ -69,7 +69,7 @@ public class LessonController {
             return "lesson/create";
         }
         lessonService.createNew(lessonDto);
-        return "redirect:/les/all";
+        return "redirect:/home";
     }
 
 
@@ -81,18 +81,6 @@ public class LessonController {
         model.addAttribute("lesson");
         return "lesson/edit";
     }
-
-    @PostMapping("/edit/{id}")
-    public String updateLesson(@Valid QualificationDto qualificationDto, BindingResult result, @PathVariable Long id, Model model) {
-        if (result.hasErrors()) {
-            model.addAttribute("qual",  qualificationDto);
-            System.out.println("chuj");
-            return "lesson/edit";
-        }
-//        lessonService.updateLessonFromForm(qualificationDto);
-        return "redirect:/lesson/all";
-    }
-
 
 
 /*
@@ -108,14 +96,14 @@ public class LessonController {
         return "lesson/SingleLesson";
     }
 
-    @PostMapping("/setState/{id}/{state}")
+    @PostMapping("/setState/{id}/{stateId}")
     public String cancelLesson(Model model, @PathVariable Long id, @PathVariable Long stateId) {
         Lesson lesson = lessonRepository.getOne(id);
         lesson.setId(id);
         lesson.setStatus(lessonStatusRepository.getOne(stateId));
         lessonRepository.save(lesson);
         model.addAttribute("lesson");
-        return "home";
+        return "redirect:/home";
     }
 
 
